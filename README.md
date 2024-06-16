@@ -89,3 +89,48 @@ spec:
       # prune: true
       selfHeal: true
 ```
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vllm-granite-8b
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  project: default
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: vllm-granite-8b
+  source:
+    path: .
+    repoURL: https://github.com/alpha-hack-program/model-server.git
+    targetRevision: main
+    helm:
+      parameters:
+        - name: instanceName
+          value: "vllm-granite-8b"
+        - name: dataScienceProjectNamespace
+          value: "vllm-granite-8b"
+        - name: dataScienceProjectDisplayName
+          value: "vllm-granite-8b"
+        - name: model.root
+          value: ibm-granite
+        - name: model.id
+          value: granite-8b-code-instruct
+        - name: model.name
+          value: granite-8b
+        - name: model.displayName
+          value: "Granite 8B Code Instruct"
+        - name: model.accelerator.productName
+          value: "NVIDIA-A10G"
+        - name: model.accelerator.min
+          value: '1'
+        - name: model.accelerator.max
+          value: '1'
+  syncPolicy:
+    automated:
+      # prune: true
+      selfHeal: true
+```
