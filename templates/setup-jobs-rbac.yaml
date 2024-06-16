@@ -4,7 +4,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-1" # Set sync-wave to -1 to avoid conflicts with other resources
+    argocd.argoproj.io/hook: PreSync
   name: route-reader-{{ .Values.instanceName }}
 rules:
 - apiGroups: ["route.openshift.io"]
@@ -15,7 +15,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-1" # Set sync-wave to -1 to avoid conflicts with other resources
+    argocd.argoproj.io/hook: PreSync
   name: setup-job
   namespace: {{ .Values.dataScienceProjectNamespace }}
 ---
@@ -23,7 +23,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-1" # Set sync-wave to -1 to avoid conflicts with other resources
+    argocd.argoproj.io/hook: PreSync
   name: setup-job-edit
   namespace: {{ .Values.dataScienceProjectNamespace }}
 roleRef:
@@ -38,7 +38,7 @@ kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-1" # Set sync-wave to -1 to avoid conflicts with other resources
+    argocd.argoproj.io/hook: PreSync
   name: setup-job-route-reader-binding-{{ .Values.instanceName }}
 subjects:
 - kind: ServiceAccount
