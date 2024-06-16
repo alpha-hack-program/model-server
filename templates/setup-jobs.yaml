@@ -2,11 +2,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: job-{{ .Values.model.name }}-model-setup
+  generateName: job-{{ .Values.model.name }}-model-setup
   namespace: "{{ .Values.dataScienceProjectNamespace }}"
   annotations:
-    job.kubernetes.io/disabled: "true"
-    argocd.argoproj.io/sync-options: Replace=true
+    argocd.argoproj.io/hook: PreSync
 spec:
   selector: {}
   template:
