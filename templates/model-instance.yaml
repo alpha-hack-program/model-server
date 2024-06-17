@@ -27,7 +27,6 @@ spec:
       runtime: {{ .Values.model.name }}
       storage:
         key: aws-connection-{{ .Values.model.connection.name }}
-        # path: {{ .Values.model.connection.path }}
         path: "{{ printf "%s/%s" .Values.model.root .Values.model.id }}"
     tolerations:
       - effect: NoSchedule
