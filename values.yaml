@@ -30,7 +30,7 @@ model:
     productName: NVIDIA-A10G
   connection:
     name: llm
-    path: mistralai/Mistral-7B-Instruct-v0.2
+    # path: mistralai/Mistral-7B-Instruct-v0.2
   volumes:
     shm:
       sizeLimit: 2Gi
