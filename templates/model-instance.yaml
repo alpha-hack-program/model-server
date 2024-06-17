@@ -58,8 +58,10 @@ spec:
         - /models-cache
         - '--port'
         - '8080'
+        {{- if .Values.model.maxModelLen }}
         - '--max-model-len'
-        - '6144'
+        - '{{ .Values.model.maxModelLen }}'
+        {{- end }}
         {{- if eq .Values.model.accelerator.productName "Tesla-T4" }}
         - '--dtype'
         - float16

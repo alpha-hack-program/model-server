@@ -12,6 +12,7 @@ model:
   displayName: Mistral 7b
   maxReplicas: 1
   format: pytorch
+  maxModelLen: '6144'
   apiProtocol: REST
   runtime:
     templateName: vllm-mistral-7b-serving-template

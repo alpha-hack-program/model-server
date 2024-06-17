@@ -33,6 +33,12 @@ spec:
           value: mistral-7b
         - name: model.displayName
           value: "Mistral 7b"
+        - name: model.maxModelLen
+          value: '6144'
+        - name: model.runtime.displayName
+          value: "vLLM Mistral 7B"
+        - name: model.runtime.templateName
+          value: "vllm-mistral-7b-serving-template"
         - name: model.accelerator.productName
           value: "NVIDIA-A10G"
         - name: model.accelerator.min
@@ -78,6 +84,10 @@ spec:
           value: llama-3-8b
         - name: model.displayName
           value: "Llama 3 8B"
+        - name: model.runtime.displayName
+          value: "vLLM Llama 3 8B"
+        - name: model.runtime.templateName
+          value: "vllm-llama-3-8b-serving-template"
         - name: model.accelerator.productName
           value: "NVIDIA-A10G"
         - name: model.accelerator.min
@@ -123,6 +133,12 @@ spec:
           value: granite-8b
         - name: model.displayName
           value: "Granite 8B Code Instruct"
+        - name: model.maxModelLen
+          value: '4096'
+        - name: model.runtime.displayName
+          value: "vLLM Granite 3 8B"
+        - name: model.runtime.templateName
+          value: "vllm-granite-8b-serving-template"
         - name: model.accelerator.productName
           value: "NVIDIA-A10G"
         - name: model.accelerator.min
