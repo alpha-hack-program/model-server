@@ -2,10 +2,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: job-{{ .Values.model.name }}-model-setup
+  name: job-{{ .Values.model.name }}-model-setup
   namespace: "{{ .Values.dataScienceProjectNamespace }}"
   annotations:
     argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   selector: {}
   template:
@@ -91,6 +93,7 @@ metadata:
     app: models-pvc
   annotations:
     argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   accessModes:
   - ReadWriteOnce
