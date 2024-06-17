@@ -5,6 +5,7 @@ kind: ClusterRole
 metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "0"
   name: route-reader-{{ .Values.instanceName }}
 rules:
 - apiGroups: ["route.openshift.io"]
@@ -24,6 +25,7 @@ kind: RoleBinding
 metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "0"
   name: setup-job-edit
   namespace: {{ .Values.dataScienceProjectNamespace }}
 roleRef:
@@ -39,6 +41,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   annotations:
     argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "0"
   name: setup-job-route-reader-binding-{{ .Values.instanceName }}
 subjects:
 - kind: ServiceAccount
