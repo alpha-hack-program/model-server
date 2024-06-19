@@ -3,7 +3,7 @@ apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"
     openshift.io/display-name: "{{ .Values.model.displayName }}"
     serving.knative.openshift.io/enablePassthrough: 'true'
     sidecar.istio.io/inject: 'true'
@@ -40,6 +40,7 @@ apiVersion: serving.kserve.io/v1alpha1
 kind: ServingRuntime
 metadata:
   annotations:
+    argocd.argoproj.io/sync-wave: "2"
     opendatahub.io/accelerator-name: migrated-gpu
     opendatahub.io/apiProtocol: {{ .Values.model.apiProtocol }}
     opendatahub.io/template-display-name: "{{ .Values.model.runtime.templateDisplayName }}"
